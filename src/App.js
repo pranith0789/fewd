@@ -1,65 +1,176 @@
-// import React from 'react';
-// import {Route,Routes,BrowserRouter} from 'react-router-dom';
-// import About from './about.js';
-// import Home from './home.js';
-// import Contact from './contact.js';
-// const App = () => {
-//   return(
-//     <div>
-//       <BrowserRouter>
-//       <Routes>
-//         <Route path="/about" element={<About/>}></Route>
-//         <Route path="/" element={<Home/>}></Route>
-//         <Route path="/contact" element={<Contact/>}></Route>
-//       </Routes>
-//       </BrowserRouter>
-//     </div>
-//   );
-// }
-// export default App;
-import React, { useMemo, useState } from 'react';
+//9
+import React from 'react';
+import {Route,Routes,BrowserRouter} from 'react-router-dom';
+import About from './about.js';
+import Home from './home.js';
+import Contact from './contact.js';
+const App = () => {
+  return(
+    <div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/about" element={<About/>}></Route>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+      </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+export default App;
 
-// A function to calculate the sum of two numbers
-function sum(a, b) {
-  console.log('Calculating sum...');
-  return a + b;
+
+// 6
+/*
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+  function handleClick1(){
+    setCount(count - 1);
+  }
+  return (
+    <div>
+      <p>Count is {count} .</p>
+      <button onClick={handleClick}>Increment</button>
+      <button onClick={handleClick1}>Decrement</button>
+    </div>
+  );
 }
 
-// A component that uses useMemo to calculate the sum of two numbers
-function CalculateSum({ a, b }) {
-  const result = useMemo(() => {
-    return sum(a, b);
-  }, [a, b]);
+export default Counter;
+*/
 
-  return <div>{result}</div>;
-}
 
-// A parent component that allows the user to input two numbers
-function App() {
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
+// 7
+/*
+import React, { useState } from 'react';
 
-  function handleNum1Change(event) {
-    setNum1(Number(event.target.value));
-  }
+function FormTable() {
+  const [formData, setFormData] = useState({});
 
-  function handleNum2Change(event) {
-    setNum2(Number(event.target.value));
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const formDataObj = Object.fromEntries(data.entries());
+    setFormData(formDataObj);
+  };
 
   return (
     <div>
-      <label>
-        Number 1:
-        <input type="number" value={num1} onChange={handleNum1Change} />
-      </label>
-      <label>
-        Number 2:
-        <input type="number" value={num2} onChange={handleNum2Change} />
-      </label>
-      <CalculateSum a={num1} b={num2} />
+      <h2>Form Data Table</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:</label>
+        <input type="text" name="name" id="name" />
+
+        <label htmlFor="email">Email:</label>
+        <input type="email" name="email" id="email" />
+
+        <label htmlFor="phone">Phone:</label>
+        <input type="tel" name="phone" id="phone" />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <h3>Submitted Form Data:</h3>
+      {Object.keys(formData).length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(formData).map(([key, value]) => (
+              <tr key={key}>
+                <td>{key}</td>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No form data submitted yet</p>
+      )}
+    </div>
+  );
+}
+
+export default FormTable;
+*/
+
+// 8
+/*
+import React from 'react';
+import { useState, useMemo } from 'react';
+function App() {
+  const [count, setCount] = useState(0);
+  const expensiveCalculation = useMemo(() => {
+    let result = 0;
+    for (let i = 0; i < 10000; i++) {
+      result += i;
+    }
+    return result;
+    }, []);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Expensive Calculation: {expensiveCalculation}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+export default App;
+*/
+
+
+// 10
+/*
+import './App.css';
+import React, {useState} from 'react';
+import axios from "axios";
+
+function App() {
+  const[entrys,setEntrys]=useState([]);
+  axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => {
+        const entry = res.data;
+        console.log(entry);
+        setEntrys(entry);
+      })
+  return (
+    <div className="App">
+      <table style={{border: "3px solid rgb(0, 0, 0)"}}>
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+        </thead>
+        {
+          entrys
+            .map(entry =>
+                <tbody>
+                    <td>{entry.id}</td>
+                    <td>{entry.name}</td>
+                    <td>{entry.username}</td>
+                    <td>{entry.email}</td>
+                    <td>{entry.phone}</td>
+                    <td>{entry.website}</td>
+                </tbody>
+            )
+        }
+      </table>
     </div>
   );
 }
 
 export default App;
+*/
