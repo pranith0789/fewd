@@ -2,32 +2,38 @@
   text-align: center;
 }
 
+/* Scale down the size of the app logo and prevent it from being clickable */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* Add an animation to the app logo that rotates it indefinitely */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Set the background color, font size, and text color of the app header */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: navy;
+  display: inline-block;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+/* Style the links in the app header */
+.App-header a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
 }
 
+/* Define the keyframe animation used for spinning the app logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +41,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Define the style of the button element */
+.btn {
+  background-color: #61dafb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Add a hover effect to the button element */
+.btn:hover {
+  background-color: #48c5f5;
 }
